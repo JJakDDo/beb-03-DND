@@ -30,7 +30,13 @@ module.exports = {
           .then((userData) => {
             // 4. jwt 를 cookie에 parsing
             res
-              .cookie("x_auth", userData.token)
+              .cookie("x_auth", userData.token, {
+                path: "/",
+                maxAge: 24 * 6 * 60 * 10000,
+                sameSite: "None",
+                httpOnly: true,
+                secure: true,
+              })
               .status(200)
               .json({ loginSuccess: true, user_Id: userData._id });
           })
