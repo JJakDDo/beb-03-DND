@@ -41,7 +41,7 @@ const SignUpModal = ({ setIsSignIn }) => {
     try {
       await axios
         .post(
-          `https://dungeonanddefi.herokuapp.com:8080/users/signup/${account}`,
+          `https://dungeonanddefi.herokuapp.com/users/signup/${account}`,
           {
             user_address: account,
             user_nickname: nickname,

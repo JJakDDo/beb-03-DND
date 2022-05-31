@@ -18,7 +18,7 @@ mongoose
 
 app.use(
   cors({
-    origin: "*",
+    origin: "https://beb-03-h6pzotasx-jjakddo.vercel.app/",
     credentials: true, // 클라이언트에 withCredential과 함께 추가
   })
 );
