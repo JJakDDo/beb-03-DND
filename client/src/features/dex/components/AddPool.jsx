@@ -102,7 +102,7 @@ const AddPool = ({ account }) => {
       );
 
       await axios.post(
-        "https://dungeonanddefi.herokuapp.com:8080/contracts/token",
+        "https://dungeonanddefi.herokuapp.com/contracts/token",
         [
           {
             token_symbol: currentTokenSymbol,
@@ -118,7 +118,7 @@ const AddPool = ({ account }) => {
       );
 
       await axios.post(
-        "https://dungeonanddefi.herokuapp.com:8080/contracts/pair",
+        "https://dungeonanddefi.herokuapp.com/contracts/pair",
         {
           pair_address: exchangeAddress,
           pair_name: `${currentTokenSymbol}/KLAY`,

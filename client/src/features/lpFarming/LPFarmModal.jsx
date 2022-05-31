@@ -18,7 +18,7 @@ const LPFarmModal = () => {
 
   const getExchangeList = async () => {
     let response = await axios.get(
-      "https://dungeonanddefi.herokuapp.com:8080/contracts/pair",
+      "https://dungeonanddefi.herokuapp.com/contracts/pair",
       {}
     );
     let temp = [];
@@ -36,7 +36,7 @@ const LPFarmModal = () => {
       });
     }
     response = await axios.get(
-      "https://dungeonanddefi.herokuapp.com:8080/contracts/v2pair",
+      "https://dungeonanddefi.herokuapp.com/contracts/v2pair",
       {}
     );
 

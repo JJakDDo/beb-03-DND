@@ -89,21 +89,15 @@ function App() {
         // 없으면 signUp 모달창
         // signUp 이 완료되면 isSignIn = true 상태로 바꾸어 접속
         await axios
-          .get(
-            `https://dungeonanddefi.herokuapp.com:8080/users/signin/${account}`,
-            {
-              withCredentials: true,
-            }
-          )
+          .get(`https://dungeonanddefi.herokuapp.com/users/signin/${account}`, {
+            withCredentials: true,
+          })
           .then((res) => {
             if (res.status === 200) {
               axios
-                .get(
-                  "https://dungeonanddefi.herokuapp.com:8080/users/profile",
-                  {
-                    withCredentials: true, // 없으면 요청(req)헤더에 쿠키 없음
-                  }
-                )
+                .get("https://dungeonanddefi.herokuapp.com/users/profile", {
+                  withCredentials: true, // 없으면 요청(req)헤더에 쿠키 없음
+                })
                 .then((res) => {
                   setIsSignIn(true);
                   dispatch(
