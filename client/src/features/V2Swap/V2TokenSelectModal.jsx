@@ -24,7 +24,7 @@ const V2TokenSelectModal = ({ selectedToken }) => {
         addNewToken({ name, symbol, address: newTokenAddress.current.value })
       );
       await axios.post(
-        "http://localhost:8080/contracts/v2token",
+        "https://dungeonanddefi.herokuapp.com:8080/contracts/v2token",
         [
           {
             token_symbol: symbol,

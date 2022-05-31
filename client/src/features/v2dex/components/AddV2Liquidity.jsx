@@ -212,7 +212,7 @@ const AddV2Liquidity = ({ setSelectedToken, setCurrentNav }) => {
         const aSymbol = tokens[token0].symbol;
         const bSymbol = tokens[token1].symbol;
         await axios.post(
-          "http://localhost:8080/contracts/v2pair",
+          "https://dungeonanddefi.herokuapp.com:8080/contracts/v2pair",
           {
             v2pair_address: _pairAddress,
             v2pair_name: `${aSymbol}/${bSymbol}`,

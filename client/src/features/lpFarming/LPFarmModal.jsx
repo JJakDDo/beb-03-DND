@@ -17,7 +17,10 @@ const LPFarmModal = () => {
   const { farms } = useSelector((state) => state.lpFarm);
 
   const getExchangeList = async () => {
-    let response = await axios.get("http://localhost:8080/contracts/pair", {});
+    let response = await axios.get(
+      "https://dungeonanddefi.herokuapp.com:8080/contracts/pair",
+      {}
+    );
     let temp = [];
     const caver = new Caver(window.klaytn);
     const master = new caver.klay.Contract(masterABI, masterAddrss);
@@ -32,7 +35,10 @@ const LPFarmModal = () => {
         pid: Number(pid),
       });
     }
-    response = await axios.get("http://localhost:8080/contracts/v2pair", {});
+    response = await axios.get(
+      "https://dungeonanddefi.herokuapp.com:8080/contracts/v2pair",
+      {}
+    );
 
     for (let i = 0; i < response.data.length; i++) {
       let pid = await master.methods

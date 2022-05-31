@@ -38,7 +38,7 @@ const DexModal = () => {
 
   const getTokenList = async () => {
     const response = await axios.get(
-      "http://localhost:8080/contracts/token",
+      "https://dungeonanddefi.herokuapp.com:8080/contracts/token",
       {}
     );
     const tokenList = response.data.map((token) => {
@@ -53,7 +53,7 @@ const DexModal = () => {
 
   const getExchangeList = async () => {
     const response = await axios.get(
-      "http://localhost:8080/contracts/pair",
+      "https://dungeonanddefi.herokuapp.com:8080/contracts/pair",
       {}
     );
     const exchangeList = response.data.map((token) => {
