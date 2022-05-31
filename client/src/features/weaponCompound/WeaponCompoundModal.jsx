@@ -17,7 +17,7 @@ import {
   setWeapons,
 } from "./compoundInfoSlice";
 
-import { nftAddress, nftABI } from "./nftContractInfo";
+import { nftAddress, nftABI } from "../marketplace/nftContractInfo";
 import {
   WeaponCompoundModalBox,
   CloseWeaponCompoundButton,
