@@ -16,6 +16,7 @@
         "express": "^4.17.3",
         "jsonwebtoken": "^8.5.1",
         "mongoose": "^5.3.0",
-        "mongoose-auto-number": "^1.0.7"
+        "mongoose-auto-number": "^1.0.7",
+        "nodemon": "^2.0.16"
     }
 }
