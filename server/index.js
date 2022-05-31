@@ -18,7 +18,7 @@ mongoose
 
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: "*",
     credentials: true, // 클라이언트에 withCredential과 함께 추가
   })
 );
