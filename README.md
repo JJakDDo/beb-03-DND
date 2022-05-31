@@ -1,52 +1,26 @@
-# beb-03-DND
+# beb-03-project3-team10
 
-## Purpose
-인센티브 시스템을 갖춘 커뮤니티 사이트 기능 개발
+# 팀 소개
 
-## Get Start
-** Client **
-```shell
-cd client
+- 팀 명 : DND
+- 프로젝트 명 : Dungeon & De-Fi
+- 팀원: 강동욱(팀장), 김일웅, 백동현, 양우현
+- Github 링크 : [https://github.com/codestates/beb-03-DND](https://github.com/codestates/beb-03-DND)
+- 배포 링크 : TBA
 
-# installation
-npm install
+# 프로젝트 소개
 
-# run start 
-npm start
-```
-** Server **
-```shell
-cd server
+### Dungeon & De-Fi 란 ?
 
-# installation
-npm install
+> **De-Fi를 쉽고 재밌게!**
+> 
 
-# run start 
-npm start
-```
+Dungeon & De-Fi, DND는 De-Fi를 잘 모르는 일반 유저도 게임의 형식으로 쉽게 접근할 수 있는 프로젝트 입니다. 유저는 DND 게임 플레이로 얻은 URU토큰으로 탈중앙화 거래소(DEX), NFT 거래, 이자 농사(Yield-Farming)등 다양한 서비스를 쉽게 이용할 수 있습니다.
 
-### git commit Comment rule
-**Comment Rule**
-- 어떻게 보다는 무엇과 왜를 설명한다
-- 전체 영어로 작성
-- 제목 첫 글자는 대문자로 작성
-- 제목 끝에 마침표 넣지 않기
-- 제목을 50글자 내로 제한
-- 본문의 각 행은 72글자 내로 제한
+또한 광산, 몬스터 사냥으로 얻은 URU 토큰으로 더 강한 무기를 합성할 수 있고, 다른 유저의 무기 합성의 성공, 실패에 베팅도 할 수 있는 등 다양한 컨텐츠가 준비되어 있습니다.
 
-**Comment Structure**
-``` shell
-# 헤더
-<type>(<name>): <subject>
-<BLANK LINE>
-# 본문 => 옵션
-<body>                         
-```
-type 
-- feat : 새로운 기능에 대한 커밋
-- bug : 버그 수정에 대한 커밋
-- build : 빌드 관련 파일 수정에 대한 커밋
-- chore : 그 외 자잘한 수정에 대한 커밋
-- docs : 문서 수정에 대한 커밋(ReadMe)
-- style : 코드 스타일 혹은 포맷 등에 관한 커밋
-- test : 테스트 코드 수정에 대한 커밋
+디파이 투자가 어렵게만 느껴지셨나요? 지금 바로 접속하여 캐릭터를 생성하고 NPC에게 말을 걸어보세요. 복잡한 금융 서비스도 재미있게 즐길 수 있습니다.
+
+#### 자세한 내용은 노션 페이지에서 확인 가능합니다.<br>
+
+https://www.notion.so/10-DND-353dd0dedaa24f10819d3cdfc2a60ade

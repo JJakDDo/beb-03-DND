@@ -1,0 +1,52 @@
+@font-face {
+  font-family: "DungGeunMo";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/DungGeunMo.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+body {
+  margin: 0;
+  font-family: "DungGeunMo", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+    "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+input,
+textarea,
+button {
+  font-family: "DungGeunMo", source-code-pro, Menlo, Monaco, Consolas,
+    "Courier New", monospace;
+}
+input[type="radio"] {
+  display: none;
+}
+div:hover {
+  cursor: default;
+}
+*:focus {
+  outline: none;
+}
+
+*::-webkit-scrollbar {
+  display: none;
+}
