@@ -6,7 +6,7 @@
 - 프로젝트 명 : Dungeon & De-Fi
 - 팀원: 강동욱(팀장), 김일웅, 백동현, 양우현
 - Github 링크 : [https://github.com/codestates/beb-03-DND](https://github.com/codestates/beb-03-DND)
-- 배포 링크 : TBA
+- 배포 링크 : [https://beb-03-dnd.vercel.app/](https://beb-03-dnd.vercel.app/)
 
 # 프로젝트 소개
 
