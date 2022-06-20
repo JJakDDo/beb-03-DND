@@ -58,13 +58,14 @@ const V2SwapModal = () => {
   const [outputTokenAddress, setOutputTokenAddress] = useState("");
   const [swapPath, setSwapPath] = useState([]);
 
-  // DFS를 이용해서 토큰 Path 찾기
+  // BFS를 이용해서 토큰 Path 찾기
   const getPath = () => {
     return new Promise(async (resolve, reject) => {
       try {
         const caver = new Caver(window.klaytn);
         const factory = new caver.klay.Contract(factoryABI, factoryAddress);
         const visited = Array(tokens.length).fill(false);
+        /*
         let stacks = [];
         stacks.push({ token: token0, path: [tokens[token0].address] });
         visited[token0] = true;
@@ -82,6 +83,31 @@ const V2SwapModal = () => {
           for (let i = 0; i < visited.length; i++) {
             if (!visited[i]) {
               stacks.push({
+                token: i,
+                path: [...next.path, tokens[i].address],
+              });
+              visited[i] = true;
+            }
+          }
+        }
+        */
+        let queue = [];
+        queue.push({ token: token0, path: [tokens[token0].address] });
+        visited[token0] = true;
+        let result = [];
+        while (queue.length) {
+          const next = queue.shift();
+          const pairAddress = await factory.methods
+            .pairs(tokens[next.token].address, tokens[token1].address)
+            .call();
+          if (pairAddress !== "0x0000000000000000000000000000000000000000") {
+            result = [...next.path, tokens[token1].address];
+            break;
+          }
+
+          for (let i = 0; i < visited.length; i++) {
+            if (!visited[i]) {
+              queue.push({
                 token: i,
                 path: [...next.path, tokens[i].address],
               });
