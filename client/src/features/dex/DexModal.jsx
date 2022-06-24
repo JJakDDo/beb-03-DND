@@ -15,6 +15,8 @@ import { exchangeABI } from "../dex/contractInfo";
 import { clearState } from "../tokenSwap/tokenSwapSlice";
 import { initTokenList } from "../tokenSwap/tokenSwapSlice";
 import { initExchange } from "./dexSlice";
+import { startLoading, stopLoading } from "../loading/loadingSlice";
+import Loading from "../loading/Loading";
 
 const DexModal = () => {
   const dispatch = useDispatch();
@@ -25,6 +27,7 @@ const DexModal = () => {
   const [exchange, setExchange] = useState({});
   const [selectedToken, setSelectedToken] = useState(0);
   const [currentExchangeAddress, setCurrentExchangeAddress] = useState("");
+  const { isLoading } = useSelector((state) => state.loading);
 
   const getExchangeContract = (address) => {
     const caver = new Caver(window.klaytn);
@@ -64,9 +67,11 @@ const DexModal = () => {
       };
     });
     dispatch(initExchange({ list: exchangeList }));
+    dispatch(stopLoading());
   };
 
   useEffect(() => {
+    dispatch(startLoading());
     getTokenList();
     getExchangeList();
   }, []);
@@ -91,7 +96,9 @@ const DexModal = () => {
               <li onClick={() => setCurrentNav(2)}>풀 추가</li>
               <div></div>
             </DexNavbar>
-            {currentNav == 0 && account ? (
+            {isLoading ? (
+              <Loading />
+            ) : currentNav == 0 && account ? (
               <MyLiquidity account={account} />
             ) : currentNav == 1 && account ? (
               <AddLiquidity

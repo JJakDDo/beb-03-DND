@@ -5,7 +5,8 @@ import axios from "axios";
 import { closeV2SwapModal } from "../modal/v2SwapModalSlice";
 import TokenSelectModal from "./V2TokenSelectModal";
 import { openSubModal, changeToken0, changeToken1 } from "./v2SwapSlice";
-import { stopLoading } from "../loading/loadingSlice";
+import { startLoading, stopLoading } from "../loading/loadingSlice";
+import Loading from "../loading/Loading";
 import {
   Modal,
   Container,
@@ -57,6 +58,7 @@ const V2SwapModal = () => {
   const [inputTokenAddress, setInputTokenAddress] = useState("");
   const [outputTokenAddress, setOutputTokenAddress] = useState("");
   const [swapPath, setSwapPath] = useState([]);
+  const { isLoading } = useSelector((state) => state.loading);
 
   // BFS를 이용해서 토큰 Path 찾기
   const getPath = () => {
@@ -317,9 +319,11 @@ const V2SwapModal = () => {
       };
     });
     dispatch(initV2Exchange({ list: exchangeList }));
+    dispatch(stopLoading());
   };
 
   useEffect(() => {
+    dispatch(startLoading());
     getTokenList();
     getExchangeList();
   }, []);
@@ -345,73 +349,79 @@ const V2SwapModal = () => {
                 }}
               ></button>
             </Header>
-            <InputContainer type='number'>
-              <button
-                onClick={() => {
-                  dispatch(openSubModal());
-                  setSelectedToken(0);
-                }}
-              >
-                {tokens[token0]?.symbol}
-                <img src='assets/arrowDown.png' />
-              </button>
-              <input
-                placeholder='0.0'
-                ref={token0InputRef}
-                onChange={getOutputAmount}
-              />
-              <BalanceContainer>
-                <div onClick={inputMaxToken}>Max</div>
-                <span>
-                  잔액: {parseFloat(Number(balance).toFixed(2))}{" "}
-                  {tokens[token0]?.symbol}
-                </span>
-              </BalanceContainer>
-            </InputContainer>
-            <UpDownButton onClick={swapToken0AndToken1}></UpDownButton>
-            <InputContainer type='number'>
-              <button
-                onClick={() => {
-                  dispatch(openSubModal());
-                  setSelectedToken(1);
-                }}
-              >
-                {tokens[token1]?.symbol}
-                <img src='assets/arrowDown.png' />
-              </button>
-              <input placeholder='0.0' disabled ref={token1InputRef} />
+            {isLoading ? (
+              <Loading />
+            ) : (
+              <>
+                <InputContainer type='number'>
+                  <button
+                    onClick={() => {
+                      dispatch(openSubModal());
+                      setSelectedToken(0);
+                    }}
+                  >
+                    {tokens[token0]?.symbol}
+                    <img src='assets/arrowDown.png' />
+                  </button>
+                  <input
+                    placeholder='0.0'
+                    ref={token0InputRef}
+                    onChange={getOutputAmount}
+                  />
+                  <BalanceContainer>
+                    <div onClick={inputMaxToken}>Max</div>
+                    <span>
+                      잔액: {parseFloat(Number(balance).toFixed(2))}{" "}
+                      {tokens[token0]?.symbol}
+                    </span>
+                  </BalanceContainer>
+                </InputContainer>
+                <UpDownButton onClick={swapToken0AndToken1}></UpDownButton>
+                <InputContainer type='number'>
+                  <button
+                    onClick={() => {
+                      dispatch(openSubModal());
+                      setSelectedToken(1);
+                    }}
+                  >
+                    {tokens[token1]?.symbol}
+                    <img src='assets/arrowDown.png' />
+                  </button>
+                  <input placeholder='0.0' disabled ref={token1InputRef} />
 
-              <BalanceContainer>
-                <span>
-                  잔액:{" "}
-                  {token1 < 0
-                    ? "0.0"
-                    : `${parseFloat(Number(balance1).toFixed(2))} ${
-                        tokens[token1]?.symbol
-                      }`}
-                </span>
-              </BalanceContainer>
-            </InputContainer>
-            <SwapInfoContainer>
-              {price && (
-                <InfoContainer>
-                  <span>가격</span>
-                  <span>
-                    {price} {tokens[token1]?.symbol} per{" "}
-                    {tokens[token0]?.symbol}{" "}
-                  </span>
-                </InfoContainer>
-              )}
-              <InfoContainer>
-                <span>Slippage 허용</span>
-                <span>1%</span>
-              </InfoContainer>
-              <InfoContainer>
-                <span>최소 수령</span>
-                <span>{parseFloat(minOutput.toFixed(6))}</span>
-              </InfoContainer>
-            </SwapInfoContainer>
-            <Button onClick={swapToken}>교환</Button>
+                  <BalanceContainer>
+                    <span>
+                      잔액:{" "}
+                      {token1 < 0
+                        ? "0.0"
+                        : `${parseFloat(Number(balance1).toFixed(2))} ${
+                            tokens[token1]?.symbol
+                          }`}
+                    </span>
+                  </BalanceContainer>
+                </InputContainer>
+                <SwapInfoContainer>
+                  {price && (
+                    <InfoContainer>
+                      <span>가격</span>
+                      <span>
+                        {price} {tokens[token1]?.symbol} per{" "}
+                        {tokens[token0]?.symbol}{" "}
+                      </span>
+                    </InfoContainer>
+                  )}
+                  <InfoContainer>
+                    <span>Slippage 허용</span>
+                    <span>1%</span>
+                  </InfoContainer>
+                  <InfoContainer>
+                    <span>최소 수령</span>
+                    <span>{parseFloat(minOutput.toFixed(6))}</span>
+                  </InfoContainer>
+                </SwapInfoContainer>
+                <Button onClick={swapToken}>교환</Button>
+              </>
+            )}
           </Container>
         </Modal>
       )}
