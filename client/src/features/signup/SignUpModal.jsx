@@ -25,6 +25,10 @@ const SignUpModal = ({ setIsSignIn }) => {
   ]);
   // const closeSignUpModal = useSelector((state) => state.signUpModal);
 
+  const selectedCharacter = (idx) => {
+    setSelectedChar(selectedChar.map((elem, i) => (i === idx ? true : false)));
+  };
+
   const signUp = async (event) => {
     // form 제출버튼 클릭시 페이지 자동 새로고침 방지
     event.preventDefault();
@@ -134,18 +138,7 @@ const SignUpModal = ({ setIsSignIn }) => {
                 border: selectedChar[0] ? "2px solid orange" : "none",
               }}
               onClick={() => {
-                setSelectedChar([
-                  true,
-                  false,
-                  false,
-                  false,
-                  false,
-                  false,
-                  false,
-                  false,
-                  false,
-                  false,
-                ]);
+                selectedCharacter(0);
               }}
             >
               <input
@@ -176,18 +169,7 @@ const SignUpModal = ({ setIsSignIn }) => {
                 border: selectedChar[1] ? "2px solid orange" : "none",
               }}
               onClick={() => {
-                setSelectedChar([
-                  false,
-                  true,
-                  false,
-                  false,
-                  false,
-                  false,
-                  false,
-                  false,
-                  false,
-                  false,
-                ]);
+                selectedCharacter(1);
               }}
             >
               <input
@@ -218,18 +200,7 @@ const SignUpModal = ({ setIsSignIn }) => {
                 border: selectedChar[2] ? "2px solid orange" : "none",
               }}
               onClick={() => {
-                setSelectedChar([
-                  false,
-                  false,
-                  true,
-                  false,
-                  false,
-                  false,
-                  false,
-                  false,
-                  false,
-                  false,
-                ]);
+                selectedCharacter(2);
               }}
             >
               <input
@@ -260,18 +231,7 @@ const SignUpModal = ({ setIsSignIn }) => {
                 border: selectedChar[3] ? "2px solid orange" : "none",
               }}
               onClick={() => {
-                setSelectedChar([
-                  false,
-                  false,
-                  false,
-                  true,
-                  false,
-                  false,
-                  false,
-                  false,
-                  false,
-                  false,
-                ]);
+                selectedCharacter(3);
               }}
             >
               <input
@@ -302,18 +262,7 @@ const SignUpModal = ({ setIsSignIn }) => {
                 border: selectedChar[4] ? "2px solid orange" : "none",
               }}
               onClick={() => {
-                setSelectedChar([
-                  false,
-                  false,
-                  false,
-                  false,
-                  true,
-                  false,
-                  false,
-                  false,
-                  false,
-                  false,
-                ]);
+                selectedCharacter(4);
               }}
             >
               <input
@@ -344,18 +293,7 @@ const SignUpModal = ({ setIsSignIn }) => {
                 border: selectedChar[5] ? "2px solid orange" : "none",
               }}
               onClick={() => {
-                setSelectedChar([
-                  false,
-                  false,
-                  false,
-                  false,
-                  false,
-                  true,
-                  false,
-                  false,
-                  false,
-                  false,
-                ]);
+                selectedCharacter(5);
               }}
             >
               <input
@@ -387,18 +325,7 @@ const SignUpModal = ({ setIsSignIn }) => {
                 border: selectedChar[6] ? "2px solid orange" : "none",
               }}
               onClick={() => {
-                setSelectedChar([
-                  false,
-                  false,
-                  false,
-                  false,
-                  false,
-                  false,
-                  true,
-                  false,
-                  false,
-                  false,
-                ]);
+                selectedCharacter(6);
               }}
             >
               <input
@@ -429,18 +356,7 @@ const SignUpModal = ({ setIsSignIn }) => {
                 border: selectedChar[7] ? "2px solid orange" : "none",
               }}
               onClick={() => {
-                setSelectedChar([
-                  false,
-                  false,
-                  false,
-                  false,
-                  false,
-                  false,
-                  false,
-                  true,
-                  false,
-                  false,
-                ]);
+                selectedCharacter(7);
               }}
             >
               <input
@@ -471,18 +387,7 @@ const SignUpModal = ({ setIsSignIn }) => {
                 border: selectedChar[8] ? "2px solid orange" : "none",
               }}
               onClick={() => {
-                setSelectedChar([
-                  false,
-                  false,
-                  false,
-                  false,
-                  false,
-                  false,
-                  false,
-                  false,
-                  true,
-                  false,
-                ]);
+                selectedCharacter(8);
               }}
             >
               <input
@@ -513,18 +418,7 @@ const SignUpModal = ({ setIsSignIn }) => {
                 border: selectedChar[9] ? "2px solid orange" : "none",
               }}
               onClick={() => {
-                setSelectedChar([
-                  false,
-                  false,
-                  false,
-                  false,
-                  false,
-                  false,
-                  false,
-                  false,
-                  false,
-                  true,
-                ]);
+                selectedCharacter(9);
               }}
             >
               <input
