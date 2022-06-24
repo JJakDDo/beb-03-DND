@@ -13,8 +13,6 @@ import { DexNavbar } from "../../styles/DexNavbar.styled";
 import { exchangeABI } from "../dex/contractInfo";
 import { initTokenList, clearState } from "../V2Swap/v2SwapSlice";
 import { initV2Exchange } from "./V2DexSlice";
-import { startLoading, stopLoading } from "../loading/loadingSlice";
-import Loading from "../loading/Loading";
 
 const V2DexModal = () => {
   const dispatch = useDispatch();
@@ -25,7 +23,6 @@ const V2DexModal = () => {
   const [exchange, setExchange] = useState({});
   const [selectedToken, setSelectedToken] = useState(0);
   const [currentExchangeAddress, setCurrentExchangeAddress] = useState("");
-  const { isLoading } = useSelector((state) => state.loading);
 
   const getExchangeContract = (address) => {
     const caver = new Caver(window.klaytn);
@@ -66,12 +63,10 @@ const V2DexModal = () => {
       };
     });
     dispatch(initV2Exchange({ list: exchangeList }));
-    dispatch(stopLoading());
   };
 
   useEffect(() => {
     if (currentNav === 0) {
-      dispatch(startLoading());
       getTokenList();
       getExchangeList();
     }
@@ -96,9 +91,7 @@ const V2DexModal = () => {
               <li onClick={() => setCurrentNav(1)}>유동성 풀</li>
               <div></div>
             </DexNavbar>
-            {isLoading ? (
-              <Loading />
-            ) : currentNav == 0 && account ? (
+            {currentNav == 0 && account ? (
               <MyV2Liquidity account={account} />
             ) : currentNav == 1 && account ? (
               <AddV2Liquidity
