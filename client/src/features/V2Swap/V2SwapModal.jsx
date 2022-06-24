@@ -292,7 +292,7 @@ const V2SwapModal = () => {
 
   const getTokenList = async () => {
     const response = await axios.get(
-      "https://dungeonanddefi.herokuapp.com:8080/contracts/v2token",
+      "https://dungeonanddefi.herokuapp.com/contracts/v2token",
       {}
     );
     const tokenList = response.data.map((token) => {
@@ -307,7 +307,7 @@ const V2SwapModal = () => {
 
   const getExchangeList = async () => {
     const response = await axios.get(
-      "https://dungeonanddefi.herokuapp.com:8080/contracts/v2pair",
+      "https://dungeonanddefi.herokuapp.com/contracts/v2pair",
       {}
     );
     const exchangeList = response.data.map((token) => {
